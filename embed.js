@@ -39,12 +39,14 @@
     const get = (headers, row, label) =>
       row[headers.indexOf(label)]?.trim() || '';
 
-    const subs = get(dataHeaders, dataRow, 'Subscribers');
-    const openRate = get(dataHeaders, dataRow, 'Open Rate');
-    const impressions = get(dataHeaders, dataRow, 'Avg NL Impressions');
-    const social = get(dataHeaders, dataRow, 'Social Followers');
-    const ig = get(dataHeaders, dataRow, 'IG Followers');
-    const fb = get(dataHeaders, dataRow, 'FB Followers');
+    const subs = Number(get(dataHeaders, dataRow, 'Subscribers')).toLocaleString();
+    const rawOpenRate = get(dataHeaders, dataRow, 'Open Rate');
+    const openRate = rawOpenRate ? `${Math.round(parseFloat(rawOpenRate))}%` : '';
+    const impressions = Number(get(dataHeaders, dataRow, 'Avg NL Impressions')).toLocaleString();
+    const social = Number(get(dataHeaders, dataRow, 'Social Followers')).toLocaleString();
+    const ig = Number(get(dataHeaders, dataRow, 'IG Followers')).toLocaleString();
+    const fb = Number(get(dataHeaders, dataRow, 'FB Followers')).toLocaleString();
+
 
     const totalAudience = (
       parseInt(subs.replace(/,/g, '') || '0', 10) +
