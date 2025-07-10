@@ -16,7 +16,8 @@
     text
       .trim()
       .split('\n')
-      .map(line => line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g)?.map(cell => cell.replace(/^"|"$/g, '')) || []);
+      .map(line => line.trim().split(','))
+      .filter(row => row.length > 1 && row.some(cell => cell.trim() !== ''));
 
 
   const [metaHeaders, ...metaRows] = parseCSV(metaText);
