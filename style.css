@@ -1,10 +1,4 @@
-/* Global Reset */
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
+/* Reset and container */
 .sixam-embed {
   all: initial;
   font-family: 'Poppins', sans-serif;
@@ -13,11 +7,16 @@ body {
   max-width: 100%;
   font-size: 16px;
   box-sizing: border-box;
+  line-height: 1.5;
 }
 
+.sixam-embed * {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
 /* Card Container */
-.analytics-sixam-card {
+.sixam-embed .analytics-sixam-card {
   max-width: 500px;
   margin: 2rem auto;
   text-align: center;
@@ -29,38 +28,30 @@ body {
   font-size: 16px;
 }
 
-
 /* Logo */
-.analytics-sixam-card img.analyticslogo {
+.sixam-embed img.analyticslogo {
   width: 80px;
   height: 80px;
   object-fit: contain;
-  margin: 0 auto 1rem auto; 
-  display: block;    
+  margin: 0 auto 1rem auto;
+  display: block;
 }
 
-
-/* Headings */
-.analytics-sixam-card h2 {
-  font-size: 1.5rem;
-  margin: 0.2rem 0;
-  font-weight: 700;
-}
-
-.analytics-sixam-card .analytics-city-name {
+/* Headings & Text */
+.sixam-embed .analytics-city-name {
   font-size: 1rem;
   color: #555;
   margin-bottom: 0.3rem;
 }
 
-.analytics-sixam-card .analytics-launch-date {
+.sixam-embed .analytics-launch-date {
   font-size: 0.9rem;
   color: #777;
   margin-bottom: 1rem;
 }
 
 /* CTA Button */
-.analytics-sixam-card a.analytics-cta-button {
+.sixam-embed a.analytics-cta-button {
   display: inline-block;
   background-color: #333;
   color: white;
@@ -71,12 +62,13 @@ body {
   margin-bottom: 1.5rem;
   transition: background-color 0.2s ease;
 }
-.analytics-sixam-card a.cta-button:hover {
+
+.sixam-embed a.analytics-cta-button:hover {
   opacity: 0.9;
 }
 
 /* Audience Box */
-.analytics-sixam-card .audience-box {
+.sixam-embed .audience-box {
   border: 2px solid #ccc;
   border-radius: 12px;
   padding: 1rem;
@@ -84,43 +76,8 @@ body {
   margin-bottom: 1rem;
 }
 
-/* Two Columns */
-.audience-columns {
-  display: flex;
-  justify-content: center;    
-  gap: 48px;
-  flex-wrap: wrap;
-}
-
-.audience-section {
-  flex: 0 0 auto;
-  text-align: left;        
-}
-
-
-
-
-.audience-section h4 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: #232323;
-}
-
-.analytics-value {
-  font-size: 1.1rem;
-  font-weight: 600;
-  display: block;
-  margin-top: 0.15rem;
-  line-height: 1.4;
-}
-
-.analytics-label {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #333;
-}
-
-.audience-title {
+/* Title */
+.sixam-embed .audience-title {
   font-size: 1.75rem;
   font-weight: 700;
   text-align: center;
@@ -129,37 +86,63 @@ body {
   margin-bottom: 1rem;
 }
 
+/* Columns */
+.sixam-embed .audience-columns {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.sixam-embed .audience-section {
+  flex: 0 0 auto;
+  text-align: left;
+}
+
+.sixam-embed .audience-section h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #232323;
+}
+
+.sixam-embed .analytics-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.sixam-embed .analytics-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: block;
+  margin-top: 0.15rem;
+  line-height: 1.4;
+}
 
 /* ========================
    Color Themes (by class)
    ======================== */
 
-/* Green Theme */
-.theme-green .audience-box { border-color: #52bc26; }
-.theme-green .analytics-cta-button   { background-color: #52bc26; }
-.theme-green .audience-title { color: #52bc26; }
+.sixam-embed .theme-green .audience-box { border-color: #52bc26; }
+.sixam-embed .theme-green .analytics-cta-button { background-color: #52bc26; }
+.sixam-embed .theme-green .audience-title { color: #52bc26; }
 
-/* Blue Theme */
-.theme-blue .audience-box { border-color: #2f95d3; }
-.theme-blue .analytics-cta-button   { background-color: #2f95d3; }
-.theme-blue .audience-title { color: #2f95d3; }
+.sixam-embed .theme-blue .audience-box { border-color: #2f95d3; }
+.sixam-embed .theme-blue .analytics-cta-button { background-color: #2f95d3; }
+.sixam-embed .theme-blue .audience-title { color: #2f95d3; }
 
-/* Red Theme */
-.theme-red .audience-box { border-color: #f44747; }
-.theme-red .analytics-cta-button   { background-color: #f44747; }
-.theme-red .audience-title { color: #f44747; }
+.sixam-embed .theme-red .audience-box { border-color: #f44747; }
+.sixam-embed .theme-red .analytics-cta-button { background-color: #f44747; }
+.sixam-embed .theme-red .audience-title { color: #f44747; }
 
-/* Purple Theme */
-.theme-purple .audience-box { border-color: #7546d1; }
-.theme-purple .analytics-cta-button   { background-color: #7546d1; }
-.theme-purple .audience-title { color: #7546d1; }
+.sixam-embed .theme-purple .audience-box { border-color: #7546d1; }
+.sixam-embed .theme-purple .analytics-cta-button { background-color: #7546d1; }
+.sixam-embed .theme-purple .audience-title { color: #7546d1; }
 
-/* Orange Theme */
-.theme-orange .audience-box { border-color: #f77911; }
-.theme-orange .analytics-cta-button   { background-color: #f77911; }
-.theme-orange .audience-title { color: #f77911; }
+.sixam-embed .theme-orange .audience-box { border-color: #f77911; }
+.sixam-embed .theme-orange .analytics-cta-button { background-color: #f77911; }
+.sixam-embed .theme-orange .audience-title { color: #f77911; }
 
-/* 6AM Purple Theme */
-.theme-6am-purple .audience-box { border-color: #3b3470; }
-.theme-6am-purple .analytics-cta-button   { background-color: #3b3470; }
-.theme-6am-purple .audience-title { color: #3b3470; }
+.sixam-embed .theme-6am-purple .audience-box { border-color: #3b3470; }
+.sixam-embed .theme-6am-purple .analytics-cta-button { background-color: #3b3470; }
+.sixam-embed .theme-6am-purple .audience-title { color: #3b3470; }
