@@ -97,6 +97,18 @@
     container.appendChild(card);
   });
 
+  // Move all embeds above the footer, if one exists
+  const footer = document.querySelector('footer');
+  const embeds = document.querySelectorAll('.sixam-embed');
+  
+  if (footer) {
+    embeds.forEach(embed => {
+      if (footer.parentNode.contains(embed)) {
+        footer.parentNode.insertBefore(embed, footer);
+      }
+    });
+  }
+
   window.requestAnimationFrame(() => {
   const anchor = window.location.hash?.substring(1);
   if (anchor) {
