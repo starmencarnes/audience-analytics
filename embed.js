@@ -59,11 +59,12 @@
     card.className = `sixam-card ${colorClass}`;
     card.id = mkt;
     card.innerHTML = `
-      <img class="logo" src="https://starmencarnes.github.io/audience-analytics/logos/${market}_PrimaryColor-Transparent-1000x1000.png" alt="${mkt} logo" />
+      <img class="logo" src="https://starmencarnes.github.io/audience-analytics/logos/${mkt}_PrimaryColor-Transparent-1000x1000.png" alt="${mkt} logo" />
+      <h2>${mkt}today</h2>
       <div class="city-name">${meta['City Name']}</div>
       <div class="launch-date">Launched ${meta['Launch Date']}</div>
       <a href="${meta['Audience Profile URL']}" target="_blank" class="cta-button">Audience Profile</a>
-
+    
       <div class="audience-box">
         <div class="audience-title">Total Audience: ${totalAudience}</div>
         <div class="audience-columns">
@@ -82,6 +83,7 @@
         </div>
       </div>
     `;
+
     container.appendChild(card);
   });
 })();
