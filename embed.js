@@ -2,36 +2,27 @@
   console.log("📦 embed.js is running...");
 
   const markets = document.querySelectorAll('.sixam-embed');
-  console.log("Attempting to load meta.csv and data.csv...");
+  console.log("Attempting to load meta.json and data.csv...");
 
-  const [metaText, dataText] = await Promise.all([
-    fetch('https://starmencarnes.github.io/audience-analytics/meta.csv').then(r => r.text()),
+  const [metaJson, dataText] = await Promise.all([
+    fetch('https://starmencarnes.github.io/audience-analytics/meta.json').then(r => r.json()),
     fetch('https://starmencarnes.github.io/audience-analytics/data.csv').then(r => r.text())
   ]);
 
-  console.log("Loaded meta.csv:", metaText.slice(0, 100));
+  console.log("Loaded meta.json:", metaJson.slice(0, 1));
   console.log("Loaded data.csv:", dataText.slice(0, 100));
 
   const parseCSV = text =>
     text
       .trim()
       .split('\n')
-      .map(line => line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g)?.map(cell =>
-        cell.replace(/^"|"$/g, '').trim()
-      ))
-      .filter(row => row && row.length > 1);
+      .map(line => line.trim().split(','))
+      .filter(row => row.length > 1 && row.some(cell => cell.trim() !== ''));
 
-
-
-  const [metaHeaders, ...metaRows] = parseCSV(metaText);
   const [dataHeaders, ...dataRows] = parseCSV(dataText);
 
   const metaMap = Object.fromEntries(
-    metaRows.map(row => {
-      const entry = {};
-      metaHeaders.forEach((key, i) => (entry[key.trim()] = row[i]?.trim()));
-      return [entry['Market'], entry];
-    })
+    metaJson.map(entry => [entry['Market'], entry])
   );
 
   markets.forEach(container => {
@@ -59,7 +50,6 @@
       parseInt(subs.replace(/,/g, '') || '0', 10) +
       parseInt(social.replace(/,/g, '') || '0', 10)
     ).toLocaleString();
-
 
     const colorClass = `theme-${meta['Brand Color']?.toLowerCase() || 'default'}`;
 
