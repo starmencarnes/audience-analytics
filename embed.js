@@ -1,56 +1,79 @@
 (async function () {
   const markets = document.querySelectorAll('.sixam-embed');
 
-  // Fetch your CSV file (hosted via GitHub Pages)
-  const res = await fetch('https://starmencarnes.github.io/audience-analytics/data.csv');
-  const csvText = await res.text();
+  // Load both CSVs
+  const [metaText, dataText] = await Promise.all([
+    fetch('meta.csv').then(r => r.text()),
+    fetch('data.csv').then(r => r.text())
+  ]);
 
-  // Basic CSV parsing — split into rows, then columns
-  const rows = csvText.split('\n').map(r => r.split(',')).filter(r => r.length > 1);
-  const headers = rows[0];
-  const data = rows.slice(1);
+  const parseCSV = text =>
+    text.split('\n').map(r => r.split(',')).filter(r => r.length > 1);
 
+  const [metaHeaders, ...metaRows] = parseCSV(metaText);
+  const [dataHeaders, ...dataRows] = parseCSV(dataText);
+
+  // Create a lookup map of metadata
+  const metaMap = Object.fromEntries(
+    metaRows.map(row => {
+      const entry = {};
+      metaHeaders.forEach((key, i) => (entry[key.trim()] = row[i]?.trim()));
+      return [entry['MKT'], entry];
+    })
+  );
+
+  // Loop through each embed div
   markets.forEach(container => {
-    const marketCode = container.dataset.market;
-    const match = data.find(row => row[0].trim() === marketCode); // assuming first column = market
+    const mkt = container.dataset.market;
+    const dataRow = dataRows.find(r => r[0].trim() === mkt);
+    const meta = metaMap[mkt];
 
-    if (!match) return;
+    if (!dataRow || !meta) return;
 
-    // Extract values by header index
-    const get = label => match[headers.indexOf(label)]?.trim() || '';
+    const get = (headers, row, label) =>
+      row[headers.indexOf(label)]?.trim() || '';
 
-    const marketName = get('Market');
-    const launchDate = get('Launch Date');
-    const subscribers = get('Subscribers');
-    const openRate = get('Open Rate');
-    const impressions = get('Avg NL Impressions');
-    const social = get('Social Followers');
-    const ctaUrl = get('Audience Profile URL');
+    const subs = get(dataHeaders, dataRow, 'Subscribers');
+    const openRate = get(dataHeaders, dataRow, 'Open Rate');
+    const impressions = get(dataHeaders, dataRow, 'Avg NL Impressions');
+    const social = get(dataHeaders, dataRow, 'Social Followers');
+    const ig = get(dataHeaders, dataRow, 'Instagram Following');
+    const fb = get(dataHeaders, dataRow, 'Facebook Following');
 
-    // Build dynamic logo path
-    const logoPath = `logos/${marketCode}_PrimaryColor-Transparent-1000x1000.png`;
+    const totalAudience = (
+      parseInt(subs.replace(/,/g, '')) + parseInt(social.replace(/,/g, ''))
+    ).toLocaleString();
 
-    // Create the card
+    const colorClass = `theme-${meta['Brand Color']?.toLowerCase() || 'default'}`;
+
     const card = document.createElement('div');
-    card.className = 'sixam-card';
-    card.id = marketCode;
+    card.className = `sixam-card ${colorClass}`;
+    card.id = `${mkt}today`;
     card.innerHTML = `
-      <img class="logo" src="${logoPath}" alt="${marketName} logo" />
-      <h2>${marketName}</h2>
-      <div class="launch-date">Launched ${launchDate}</div>
-      <a href="${ctaUrl}" target="_blank" class="cta-button">Audience Profile</a>
+      <img class="logo" src="logos/${mkt}_PrimaryColor-Transparent-1000x1000.png" alt="${mkt} logo" />
+      <h2>${mkt}today</h2>
+      <div class="city-name">${meta['City Name']}</div>
+      <div class="launch-date">Launched ${meta['Launch Date']}</div>
+      <a href="${meta['Audience Profile URL']}" target="_blank" class="cta-button">Audience Profile</a>
 
       <div class="audience-box">
-        <div class="audience-title">Total Audience:</div>
-        <div class="audience-grid">
-          <div class="label">📬 Subscribers</div>      <div class="value">${subscribers}</div>
-          <div class="label">📈 Open Rate</div>         <div class="value">${openRate}</div>
-          <div class="label">👀 Impressions</div>       <div class="value">${impressions}</div>
-          <div class="label">📱 Social Followers</div>  <div class="value">${social}</div>
+        <div class="audience-title">Total Audience: ${totalAudience}</div>
+        <div class="audience-columns">
+          <div class="audience-section">
+            <h4>Newsletter 📬</h4>
+            <p><span class="label">Subscribers</span><br><span class="value">${subs}</span></p>
+            <p><span class="label">Avg Open Rate</span><br><span class="value">${openRate}</span></p>
+            <p><span class="label">Avg Daily Impressions</span><br><span class="value">${impressions}</span></p>
+          </div>
+          <div class="audience-section">
+            <h4>Social Media 📱</h4>
+            <p><span class="label">Total Social Following</span><br><span class="value">${social}</span></p>
+            <p><span class="label">Instagram Following</span><br><span class="value">${ig}</span></p>
+            <p><span class="label">Facebook Following</span><br><span class="value">${fb}</span></p>
+          </div>
         </div>
       </div>
     `;
-
     container.appendChild(card);
   });
 })();
