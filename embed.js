@@ -60,7 +60,7 @@
     card.id = mkt;
     card.innerHTML = `
       <img class="logo" src="https://starmencarnes.github.io/audience-analytics/logos/${mkt}_PrimaryColor-Transparent-1000x1000.png" alt="${mkt} logo" />
-      <div class="city-name">${meta['City Name']}</div>
+      <div><h2>${meta['City Name']}</h2></div>
       <div class="launch-date">Launched ${meta['Launch Date']}</div>
       <a href="${meta['Audience Profile URL']}" target="_blank" class="cta-button">Audience Profile</a>
     
