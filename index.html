@@ -29,15 +29,12 @@
         }
       });
 
-      // Load the embed script after building all divs
+      // ✅ Load the embed logic AFTER the containers exist
       const script = document.createElement('script');
       script.src = 'embed.js';
       document.body.appendChild(script);
     });
 </script>
 
-
-  <!-- JS that renders the embed -->
-  <script src="embed.js"></script>
 </body>
 </html>
