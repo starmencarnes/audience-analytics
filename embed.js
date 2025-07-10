@@ -1,8 +1,7 @@
 (async function () {
   console.log("📦 embed.js is running...");
 
-  const root = window.__sixamEmbedTarget || document;
-  const markets = root.querySelectorAll('.sixam-embed');
+  const markets = window.__sixamEmbedTargets || document.querySelectorAll('.sixam-embed');
   console.log("Attempting to load meta.json and data.csv...");
 
   const [metaJson, dataText] = await Promise.all([
