@@ -44,6 +44,12 @@
   margin-bottom: 0.3rem;
 }
 
+.sixam-embed p {
+  font-size: 1rem;         /* or 16px */
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
 .sixam-embed .analytics-launch-date {
   font-size: 0.9rem;
   color: #777;
