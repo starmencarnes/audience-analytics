@@ -2,7 +2,7 @@
   const markets = document.querySelectorAll('.sixam-embed');
 
   // Fetch your CSV file (hosted via GitHub Pages)
-  const res = await fetch('https://yourusername.github.io/your-repo/data.csv');
+  const res = await fetch('https://starmencarnes.github.io/audience-data/data.csv');
   const csvText = await res.text();
 
   // Basic CSV parsing — split into rows, then columns
