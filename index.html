@@ -10,30 +10,32 @@
  <div id="all-markets"></div>
 
 <script>
-  // Fetch the CSV once to get all market codes
   fetch('data.csv')
     .then(res => res.text())
     .then(csv => {
-      const lines = csv.split('\n').slice(1); // skip header
+      const lines = csv.split('\n').slice(1); // skip header row
       const container = document.getElementById('all-markets');
       
       lines.forEach(line => {
-        const code = line.split(',')[0].trim(); // first column = Market code
-        if (code) {
+        const rawCode = line.split(',')[0].trim(); // column: MKT
+        if (rawCode) {
+          const marketCode = `${rawCode}today`; // append 'today'
+
           const div = document.createElement('div');
           div.className = 'sixam-embed';
-          div.dataset.market = code;
-          div.id = code;
+          div.dataset.market = rawCode;  // raw market code for matching in embed.js
+          div.id = marketCode;           // full ID for anchor scrolling
           container.appendChild(div);
         }
       });
 
-      // After appending all embed containers, load the embed logic
+      // Load the embed script after building all divs
       const script = document.createElement('script');
       script.src = 'embed.js';
       document.body.appendChild(script);
     });
 </script>
+
 
   <!-- JS that renders the embed -->
   <script src="embed.js"></script>
