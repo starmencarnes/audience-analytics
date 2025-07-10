@@ -48,8 +48,10 @@
     const fb = get(dataHeaders, dataRow, 'FB Followers');
 
     const totalAudience = (
-      parseInt(subs.replace(/,/g, '')) + parseInt(social.replace(/,/g, ''))
+      parseInt(subs.replace(/,/g, '') || '0', 10) +
+      parseInt(social.replace(/,/g, '') || '0', 10)
     ).toLocaleString();
+
 
     const colorClass = `theme-${meta['Brand Color']?.toLowerCase() || 'default'}`;
 
