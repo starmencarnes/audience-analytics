@@ -6,7 +6,7 @@ body {
 }
 
 /* Card Container */
-.sixam-card {
+.analytics-sixam-card {
   max-width: 500px;
   margin: 2rem auto;
   text-align: center;
@@ -19,7 +19,7 @@ body {
 
 
 /* Logo */
-.sixam-card img.logo {
+.analytics-sixam-card img.analyticslogo {
   width: 80px;
   height: 80px;
   object-fit: contain;
@@ -27,26 +27,26 @@ body {
 }
 
 /* Headings */
-.sixam-card h2 {
+.analytics-sixam-card h2 {
   font-size: 1.5rem;
   margin: 0.2rem 0;
   font-weight: 700;
 }
 
-.sixam-card .city-name {
+.analytics-sixam-card .analytics-city-name {
   font-size: 1rem;
   color: #555;
   margin-bottom: 0.3rem;
 }
 
-.sixam-card .launch-date {
+.analytics-sixam-card .analytics-launch-date {
   font-size: 0.9rem;
   color: #777;
   margin-bottom: 1rem;
 }
 
 /* CTA Button */
-.sixam-card a.cta-button {
+.analytics-sixam-card a.analytics-cta-button {
   display: inline-block;
   background-color: #333;
   color: white;
@@ -57,12 +57,12 @@ body {
   margin-bottom: 1.5rem;
   transition: background-color 0.2s ease;
 }
-.sixam-card a.cta-button:hover {
+.analytics-sixam-card a.cta-button:hover {
   opacity: 0.9;
 }
 
 /* Audience Box */
-.sixam-card .audience-box {
+.analytics-sixam-card .audience-box {
   border: 2px solid #ccc;
   border-radius: 12px;
   padding: 1rem;
@@ -70,7 +70,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.sixam-card {
+.analytics-sixam-card {
   font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
@@ -109,13 +109,13 @@ body {
   color: #232323;
 }
 
-.label {
+.analytics-label {
   font-size: 0.9rem;
   color: #232323;
   font-weight: bold;
 }
 
-.value {
+.analytics-value {
   font-size: 1rem;
   display: block;
   margin-top: 0.15rem;
@@ -127,30 +127,30 @@ body {
 
 /* Green Theme */
 .theme-green .audience-box { border-color: #52bc26; }
-.theme-green .cta-button   { background-color: #52bc26; }
+.theme-green .analytics-cta-button   { background-color: #52bc26; }
 .theme-green .audience-title { color: #52bc26; }
 
 /* Blue Theme */
 .theme-blue .audience-box { border-color: #2f95d3; }
-.theme-blue .cta-button   { background-color: #2f95d3; }
+.theme-blue .analytics-cta-button   { background-color: #2f95d3; }
 .theme-blue .audience-title { color: #2f95d3; }
 
 /* Red Theme */
 .theme-red .audience-box { border-color: #f44747; }
-.theme-red .cta-button   { background-color: #f44747; }
+.theme-red .analytics-cta-button   { background-color: #f44747; }
 .theme-red .audience-title { color: #f44747; }
 
 /* Purple Theme */
 .theme-purple .audience-box { border-color: #7546d1; }
-.theme-purple .cta-button   { background-color: #7546d1; }
+.theme-purple .analytics-cta-button   { background-color: #7546d1; }
 .theme-purple .audience-title { color: #7546d1; }
 
 /* Orange Theme */
 .theme-orange .audience-box { border-color: #f77911; }
-.theme-orange .cta-button   { background-color: #f77911; }
+.theme-orange .analytics-cta-button   { background-color: #f77911; }
 .theme-orange .audience-title { color: #f77911; }
 
 /* 6AM Purple Theme */
 .theme-6am-purple .audience-box { border-color: #3b3470; }
-.theme-6am-purple .cta-button   { background-color: #3b3470; }
+.theme-6am-purple .analytics-cta-button   { background-color: #3b3470; }
 .theme-6am-purple .audience-title { color: #3b3470; }
