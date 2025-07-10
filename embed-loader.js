@@ -1,41 +1,35 @@
-(async function () {
-  const head = document.head;
+(function () {
+  const host = document.querySelector('.sixam-embed');
 
-  // Load font
-  const font = document.createElement('link');
-  font.rel = 'stylesheet';
-  font.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap';
-  head.appendChild(font);
+  if (!host) return;
 
-  // Load CSS
-  const style = document.createElement('link');
-  style.rel = 'stylesheet';
-  style.href = 'https://starmencarnes.github.io/audience-analytics/style.css';
-  head.appendChild(style);
+  // Create shadow root
+  const shadow = host.attachShadow({ mode: 'open' });
 
-  // Wait until DOM is ready
-  if (document.readyState === 'loading') {
-    await new Promise(resolve => document.addEventListener('DOMContentLoaded', resolve));
-  }
+  // Add your style sheet
+  const styleLink = document.createElement('link');
+  styleLink.rel = 'stylesheet';
+  styleLink.href = 'https://starmencarnes.github.io/audience-analytics/style.css';
+  shadow.appendChild(styleLink);
 
-  // Fetch data.csv to get market list
-  const response = await fetch('https://starmencarnes.github.io/audience-analytics/data.csv');
-  const text = await response.text();
-  const rows = text.trim().split('\n').slice(1); // Skip header
+  // Add Google Fonts (optional)
+  const fontLink = document.createElement('link');
+  fontLink.rel = 'stylesheet';
+  fontLink.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap';
+  shadow.appendChild(fontLink);
 
-  rows.forEach(row => {
-    const market = row.split(',')[0]?.trim();
-    if (!market) return;
+  // Add your embed container (will be populated later)
+  const container = document.createElement('div');
+  container.className = 'sixam-embed-inner';
+  shadow.appendChild(container);
 
-    const container = document.createElement('div');
-    container.className = 'sixam-embed';
-    container.dataset.market = market;
-    document.body.appendChild(container);
-  });
-
-  // Load embed.js last
+  // Inject the script
   const script = document.createElement('script');
   script.src = 'https://starmencarnes.github.io/audience-analytics/embed.js';
   script.defer = true;
-  head.appendChild(script);
+  script.onload = () => {
+    // Make the embed.js use the shadow DOM container
+    window.__sixamEmbedTarget = container;
+  };
+  shadow.appendChild(script);
 })();
