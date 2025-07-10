@@ -5,6 +5,17 @@ body {
   padding: 0;
 }
 
+.sixam-embed {
+  all: initial;
+  font-family: 'Poppins', sans-serif;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+
 /* Card Container */
 .analytics-sixam-card {
   max-width: 500px;
@@ -15,6 +26,7 @@ body {
   box-shadow: 0 0 10px rgba(0,0,0,0.08);
   border: 1px solid #eee;
   background-color: #fff;
+  font-size: 16px;
 }
 
 
@@ -109,7 +121,7 @@ body {
 }
 
 .audience-title {
-  font-size: 1.6rem;
+  font-size: 1.75rem;
   font-weight: 700;
   text-align: center;
   border-bottom: 2px solid #ccc;
