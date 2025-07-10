@@ -23,8 +23,10 @@ body {
   width: 80px;
   height: 80px;
   object-fit: contain;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem auto; 
+  display: block;    
 }
+
 
 /* Headings */
 .analytics-sixam-card h2 {
@@ -70,16 +72,6 @@ body {
   margin-bottom: 1rem;
 }
 
-
-
-.audience-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 0.3rem;
-}
-
 /* Two Columns */
 .audience-columns {
   display: flex;
@@ -102,17 +94,29 @@ body {
   color: #232323;
 }
 
-.analytics-label {
-  font-size: 0.9rem;
-  color: #232323;
-  font-weight: bold;
-}
-
 .analytics-value {
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   display: block;
   margin-top: 0.15rem;
+  line-height: 1.4;
 }
+
+.analytics-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.audience-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+}
+
 
 /* ========================
    Color Themes (by class)
