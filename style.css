@@ -1,14 +1,18 @@
 /* Reset and container */
 .sixam-embed {
-  all: initial;
+  all: revert;
   font-family: 'Poppins', sans-serif;
   display: block;
+  position: relative;
+  float: none;
+  clear: both;
   width: 100%;
   max-width: 100%;
   font-size: 16px;
   box-sizing: border-box;
-  line-height: 1.5;
+  z-index: 1;
 }
+
 
 .sixam-embed * {
   box-sizing: border-box;
