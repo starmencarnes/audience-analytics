@@ -81,13 +81,15 @@ body {
 .audience-columns {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
 .audience-section {
-  width: 48%;
+  flex: 1 1 50%;
+  min-width: 200px;
 }
+
 
 .audience-section h4 {
   font-size: 1.05rem;
