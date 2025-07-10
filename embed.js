@@ -86,8 +86,9 @@
     // Create and insert anchor tag
     const anchor = document.createElement('a');
     anchor.className = 'AnchorLink';
-    anchor.id = mkt;
-    anchor.name = mkt;
+    const anchorId = mkt === "6AM City" ? mkt : `${mkt}today`;
+    anchor.id = anchorId;
+    anchor.name = anchorId;
     anchor.setAttribute('data-cms-ai', '0');
     anchor.setAttribute('aria-label', 'Open this option');
     anchor.setAttribute('data-uw-rm-empty-ctrl', '');
