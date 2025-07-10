@@ -7,7 +7,7 @@ body {
 
 /* Card Container */
 .sixam-card {
-  max-width: 400px;
+  max-width: 600px;
   margin: 2rem auto;
   text-align: center;
   padding: 1.5rem;
@@ -16,6 +16,7 @@ body {
   border: 1px solid #eee;
   background-color: #fff;
 }
+
 
 /* Logo */
 .sixam-card img.logo {
