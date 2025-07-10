@@ -6,30 +6,30 @@
   // Create shadow root
   const shadow = host.attachShadow({ mode: 'open' });
 
-  // Add your style sheet
+  // Add CSS
   const styleLink = document.createElement('link');
   styleLink.rel = 'stylesheet';
   styleLink.href = 'https://starmencarnes.github.io/audience-analytics/style.css';
   shadow.appendChild(styleLink);
 
-  // Add Google Fonts (optional)
+  // Add font
   const fontLink = document.createElement('link');
   fontLink.rel = 'stylesheet';
   fontLink.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap';
   shadow.appendChild(fontLink);
 
-  // Add your embed container (will be populated later)
+  // Create target container
   const container = document.createElement('div');
-  container.className = 'sixam-embed-inner';
+  container.className = 'sixam-embed';
+  container.dataset.market = host.dataset.market; // Carry over the market value
   shadow.appendChild(container);
 
-  // Inject the script
+  // Make this container available to embed.js
+  window.__sixamEmbedTarget = container;
+
+  // Load JS
   const script = document.createElement('script');
   script.src = 'https://starmencarnes.github.io/audience-analytics/embed.js';
   script.defer = true;
-  script.onload = () => {
-    // Make the embed.js use the shadow DOM container
-    window.__sixamEmbedTarget = container;
-  };
   shadow.appendChild(script);
 })();
