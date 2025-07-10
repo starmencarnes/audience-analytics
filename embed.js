@@ -13,7 +13,11 @@
   console.log("Loaded data.csv:", dataText.slice(0, 100));
 
   const parseCSV = text =>
-    text.split('\n').map(r => r.split(',')).filter(r => r.length > 1);
+    text
+      .trim()
+      .split('\n')
+      .map(line => line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g)?.map(cell => cell.replace(/^"|"$/g, '')) || []);
+
 
   const [metaHeaders, ...metaRows] = parseCSV(metaText);
   const [dataHeaders, ...dataRows] = parseCSV(dataText);
