@@ -56,28 +56,28 @@
     const colorClass = `theme-${meta['Brand Color']?.toLowerCase() || 'default'}`;
 
     const card = document.createElement('div');
-    card.className = `sixam-card ${colorClass}`;
+    card.className = `analytics-sixam-card ${colorClass}`;
     card.id = mkt;
     card.innerHTML = `
-      <img class="logo" src="https://starmencarnes.github.io/audience-analytics/logos/${mkt}_PrimaryColor-Transparent-1000x1000.png" alt="${mkt} logo" />
-      <div><h2>${meta['City Name']}</h2></div>
-      <div class="launch-date">Launched ${meta['Launch Date']}</div>
-      <a href="${meta['Audience Profile URL']}" target="_blank" class="cta-button">Audience Profile</a>
+      <img class="analyticslogo" src="https://starmencarnes.github.io/audience-analytics/logos/${mkt}_PrimaryColor-Transparent-1000x1000.png" alt="${mkt} logo" />
+      <div class="analytics-city-name">${meta['City Name']}</div>
+      <div class="analytics-launch-date">Launched ${meta['Launch Date']}</div>
+      <a href="${meta['Audience Profile URL']}" target="_blank" class="analytics-cta-button">Audience Profile</a>
     
       <div class="audience-box">
         <div class="audience-title">Total Audience: ${totalAudience}</div>
         <div class="audience-columns">
           <div class="audience-section">
             <h4>Newsletter 📬</h4>
-            <p><span class="label">Subscribers</span><br><span class="value">${subs}</span></p>
-            <p><span class="label">Avg Open Rate</span><br><span class="value">${openRate}</span></p>
-            <p><span class="label">Avg Daily Impressions</span><br><span class="value">${impressions}</span></p>
+            <p><span class="analytics-label">Subscribers</span><br><span class="analytics-value">${subs}</span></p>
+            <p><span class="analytics-label">Avg Open Rate</span><br><span class="analytics-value">${openRate}</span></p>
+            <p><span class="analytics-label">Avg Daily Impressions</span><br><span class="analytics-value">${impressions}</span></p>
           </div>
           <div class="audience-section">
             <h4>Social Media 📱</h4>
-            <p><span class="label">Total Social Following</span><br><span class="value">${social}</span></p>
-            <p><span class="label">Instagram Following</span><br><span class="value">${ig}</span></p>
-            <p><span class="label">Facebook Following</span><br><span class="value">${fb}</span></p>
+            <p><span class="analytics-label">Total Social Following</span><br><span class="analytics-value">${social}</span></p>
+            <p><span class="analytics-label">Instagram Following</span><br><span class="analytics-value">${ig}</span></p>
+            <p><span class="analytics-label">Facebook Following</span><br><span class="analytics-value">${fb}</span></p>
           </div>
         </div>
       </div>
