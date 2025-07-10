@@ -1,11 +1,17 @@
 (async function () {
   const markets = document.querySelectorAll('.sixam-embed');
 
+  console.log("Attempting to load meta.csv and data.csv...");
+
   // Load both CSVs
   const [metaText, dataText] = await Promise.all([
   fetch('https://starmencarnes.github.io/audience-analytics/meta.csv').then(r => r.text()),
   fetch('https://starmencarnes.github.io/audience-analytics/data.csv').then(r => r.text())
   ]);
+
+  console.log("Loaded meta.csv:", metaText.slice(0, 100));
+  console.log("Loaded data.csv:", dataText.slice(0, 100));
+
 
   const parseCSV = text =>
     text.split('\n').map(r => r.split(',')).filter(r => r.length > 1);
