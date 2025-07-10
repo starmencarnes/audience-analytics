@@ -19,8 +19,7 @@
         lines.forEach(line => {
           const rawCode = line.split(',')[0].trim(); // column: MKT
           if (rawCode) {
-            const marketCode = `${rawCode}today`;
-
+            const marketCode = rawCode === '6AM City' ? rawCode : `${rawCode}today`;
             const div = document.createElement('div');
             div.className = 'sixam-embed';
             div.dataset.market = rawCode;
