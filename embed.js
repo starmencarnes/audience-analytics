@@ -22,7 +22,7 @@
     metaRows.map(row => {
       const entry = {};
       metaHeaders.forEach((key, i) => (entry[key.trim()] = row[i]?.trim()));
-      return [entry['MKT'], entry];
+      return [entry['Market'], entry];
     })
   );
 
