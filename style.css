@@ -39,8 +39,8 @@
 
 /* Headings & Text */
 .sixam-embed .analytics-city-name {
-  font-size: 1rem;
-  color: #555;
+  font-size: 20px;
+  color: #232323;
   margin-bottom: 0.3rem;
 }
 
@@ -51,8 +51,8 @@
 }
 
 .sixam-embed .analytics-launch-date {
-  font-size: 0.9rem;
-  color: #777;
+  font-size: 16px;
+  color: #232323;
   margin-bottom: 1rem;
 }
 
@@ -84,7 +84,7 @@
 
 /* Title */
 .sixam-embed .audience-title {
-  font-size: 1.75rem;
+  font-size: 20px;
   font-weight: 700;
   text-align: center;
   border-bottom: 2px solid #ccc;
@@ -106,7 +106,7 @@
 }
 
 .sixam-embed .audience-section h4 {
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 0.5rem;
   color: #232323;
 }
