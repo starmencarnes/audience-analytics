@@ -7,34 +7,37 @@
 </head>
 <body>
 
- <div id="all-markets"></div>
+  <div id="all-markets"></div>
 
-<script>
-  fetch('data.csv')
-    .then(res => res.text())
-    .then(csv => {
-      const lines = csv.split('\n').slice(1); // skip header row
-      const container = document.getElementById('all-markets');
-      
-      lines.forEach(line => {
-        const rawCode = line.split(',')[0].trim(); // column: MKT
-        if (rawCode) {
-          const marketCode = `${rawCode}today`; // append 'today'
+  <script>
+    fetch('data.csv')
+      .then(res => res.text())
+      .then(csv => {
+        const lines = csv.split('\n').slice(1); // skip header row
+        const container = document.getElementById('all-markets');
 
-          const div = document.createElement('div');
-          div.className = 'sixam-embed';
-          div.dataset.market = rawCode;  // raw market code for matching in embed.js
-          div.id = marketCode;           // full ID for anchor scrolling
-          container.appendChild(div);
-        }
+        lines.forEach(line => {
+          const rawCode = line.split(',')[0].trim(); // column: MKT
+          if (rawCode) {
+            const marketCode = `${rawCode}today`;
+
+            const div = document.createElement('div');
+            div.className = 'sixam-embed';
+            div.dataset.market = rawCode;
+            div.id = marketCode;
+            container.appendChild(div);
+          }
+        });
+
+        // ✅ Confirm containers were created
+        console.log("Market container divs created:", document.querySelectorAll('.sixam-embed').length);
+
+        // ✅ Load the embed logic AFTER the containers exist
+        const script = document.createElement('script');
+        script.src = 'embed.js';
+        document.body.appendChild(script);
       });
-
-      // ✅ Load the embed logic AFTER the containers exist
-      const script = document.createElement('script');
-      script.src = 'embed.js';
-      document.body.appendChild(script);
-    });
-</script>
+  </script>
 
 </body>
 </html>
