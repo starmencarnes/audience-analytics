@@ -100,19 +100,19 @@
 }
 
 .sixam-embed .audience-section h4 {
-  font-size: 1.2rem;
+  font-size: 20px;
   margin-bottom: 0.5rem;
   color: #232323;
 }
 
 .sixam-embed .analytics-label {
-  font-size: 0.95rem;
+  font-size: 16px;
   font-weight: 500;
   color: #333;
 }
 
 .sixam-embed .analytics-value {
-  font-size: 1.1rem;
+  font-size: 16px;
   font-weight: 600;
   display: block;
   margin-top: 0.15rem;
