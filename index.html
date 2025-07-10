@@ -7,8 +7,33 @@
 </head>
 <body>
 
-  <!-- Embed target for GVL -->
-  <div class="sixam-embed" data-market="GVL" id="GVL"></div>
+ <div id="all-markets"></div>
+
+<script>
+  // Fetch the CSV once to get all market codes
+  fetch('data.csv')
+    .then(res => res.text())
+    .then(csv => {
+      const lines = csv.split('\n').slice(1); // skip header
+      const container = document.getElementById('all-markets');
+      
+      lines.forEach(line => {
+        const code = line.split(',')[0].trim(); // first column = Market code
+        if (code) {
+          const div = document.createElement('div');
+          div.className = 'sixam-embed';
+          div.dataset.market = code;
+          div.id = code;
+          container.appendChild(div);
+        }
+      });
+
+      // After appending all embed containers, load the embed logic
+      const script = document.createElement('script');
+      script.src = 'embed.js';
+      document.body.appendChild(script);
+    });
+</script>
 
   <!-- JS that renders the embed -->
   <script src="embed.js"></script>
