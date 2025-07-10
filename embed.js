@@ -57,10 +57,10 @@
 
     const card = document.createElement('div');
     card.className = `sixam-card ${colorClass}`;
-    card.id = `${mkt}today`;
+    card.id = mkt;
     card.innerHTML = `
       <img class="logo" src="logos/${mkt}_PrimaryColor-Transparent-1000x1000.png" alt="${mkt} logo" />
-      <h2>${mkt}today</h2>
+      <h2>${mkt === '6AM City' ? mkt : `${mkt}today`}</h2>
       <div class="city-name">${meta['City Name']}</div>
       <div class="launch-date">Launched ${meta['Launch Date']}</div>
       <a href="${meta['Audience Profile URL']}" target="_blank" class="cta-button">Audience Profile</a>
