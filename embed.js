@@ -3,8 +3,8 @@
 
   // Load both CSVs
   const [metaText, dataText] = await Promise.all([
-    fetch('meta.csv').then(r => r.text()),
-    fetch('data.csv').then(r => r.text())
+  fetch('https://starmencarnes.github.io/audience-analytics/meta.csv').then(r => r.text()),
+  fetch('https://starmencarnes.github.io/audience-analytics/data.csv').then(r => r.text())
   ]);
 
   const parseCSV = text =>
