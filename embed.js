@@ -59,8 +59,7 @@
     card.className = `sixam-card ${colorClass}`;
     card.id = mkt;
     card.innerHTML = `
-      <img class="logo" src="logos/${mkt}_PrimaryColor-Transparent-1000x1000.png" alt="${mkt} logo" />
-      <h2>${mkt === '6AM City' ? mkt : `${mkt}today`}</h2>
+      <img class="logo" src="https://starmencarnes.github.io/audience-analytics/logos/${market}_PrimaryColor-Transparent-1000x1000.png" alt="${mkt} logo" />
       <div class="city-name">${meta['City Name']}</div>
       <div class="launch-date">Launched ${meta['Launch Date']}</div>
       <a href="${meta['Audience Profile URL']}" target="_blank" class="cta-button">Audience Profile</a>
