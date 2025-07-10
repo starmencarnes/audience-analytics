@@ -1,4 +1,7 @@
 (async function () {
+  
+  console.log("📦 embed.js is running...");
+
   const markets = document.querySelectorAll('.sixam-embed');
 
   console.log("Attempting to load meta.csv and data.csv...");
@@ -33,6 +36,8 @@
     const mkt = container.dataset.market;
     const dataRow = dataRows.find(r => r[0].trim() === mkt);
     const meta = metaMap[mkt];
+    console.log("👉 Rendering for market:", mkt);
+
 
     if (!dataRow || !meta) return;
 
