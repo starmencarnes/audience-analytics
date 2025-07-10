@@ -1,35 +1,23 @@
-(function () {
-  // Select all embed containers
-  const hosts = document.querySelectorAll('.sixam-embed');
+<script>
+  (function () {
+    const head = document.head;
 
-  hosts.forEach(host => {
-    const shadow = host.attachShadow({ mode: 'open' });
+    // Load Poppins font
+    const font = document.createElement('link');
+    font.rel = 'stylesheet';
+    font.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap';
+    head.appendChild(font);
 
-    // Inject styles
-    const styleLink = document.createElement('link');
-    styleLink.rel = 'stylesheet';
-    styleLink.href = 'https://starmencarnes.github.io/audience-analytics/style.css';
-    shadow.appendChild(styleLink);
+    // Load styles
+    const style = document.createElement('link');
+    style.rel = 'stylesheet';
+    style.href = 'https://starmencarnes.github.io/audience-analytics/style.css';
+    head.appendChild(style);
 
-    const fontLink = document.createElement('link');
-    fontLink.rel = 'stylesheet';
-    fontLink.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap';
-    shadow.appendChild(fontLink);
-
-    // Inner container to target per card
-    const container = document.createElement('div');
-    container.className = 'sixam-embed';
-    container.dataset.market = host.dataset.market;
-    shadow.appendChild(container);
-
-    // Track all targets
-    window.__sixamEmbedTargets = window.__sixamEmbedTargets || [];
-    window.__sixamEmbedTargets.push(container);
-  });
-
-  // Load the main embed script once
-  const script = document.createElement('script');
-  script.src = 'https://starmencarnes.github.io/audience-analytics/embed.js';
-  script.defer = true;
-  document.head.appendChild(script);
-})();
+    // Load main JS
+    const script = document.createElement('script');
+    script.src = 'https://starmencarnes.github.io/audience-analytics/embed.js';
+    script.defer = true;
+    head.appendChild(script);
+  })();
+</script>
