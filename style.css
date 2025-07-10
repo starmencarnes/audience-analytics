@@ -1,13 +1,13 @@
 /* Global Reset */
 body {
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
 }
 
 /* Card Container */
 .sixam-card {
-  max-width: 600px;
+  max-width: 500px;
   margin: 2rem auto;
   text-align: center;
   padding: 1.5rem;
@@ -95,9 +95,9 @@ body {
 
 
 .audience-section h4 {
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: #555;
+  color: #232323;
 }
 
 .label {
@@ -117,31 +117,31 @@ body {
    ======================== */
 
 /* Green Theme */
-.theme-green .audience-box { border-color: #3DBB3D; }
-.theme-green .cta-button   { background-color: #3DBB3D; }
-.theme-green .audience-title { color: #3DBB3D; }
+.theme-green .audience-box { border-color: #52bc26; }
+.theme-green .cta-button   { background-color: #52bc26; }
+.theme-green .audience-title { color: #52bc26; }
 
 /* Blue Theme */
-.theme-blue .audience-box { border-color: #4A90E2; }
-.theme-blue .cta-button   { background-color: #4A90E2; }
-.theme-blue .audience-title { color: #4A90E2; }
+.theme-blue .audience-box { border-color: #2f95d3; }
+.theme-blue .cta-button   { background-color: #2f95d3; }
+.theme-blue .audience-title { color: #2f95d3; }
 
 /* Red Theme */
-.theme-red .audience-box { border-color: #E74C3C; }
-.theme-red .cta-button   { background-color: #E74C3C; }
-.theme-red .audience-title { color: #E74C3C; }
+.theme-red .audience-box { border-color: #f44747; }
+.theme-red .cta-button   { background-color: #f44747; }
+.theme-red .audience-title { color: #f44747; }
 
 /* Purple Theme */
-.theme-purple .audience-box { border-color: #9B59B6; }
-.theme-purple .cta-button   { background-color: #9B59B6; }
-.theme-purple .audience-title { color: #9B59B6; }
+.theme-purple .audience-box { border-color: #7546d1; }
+.theme-purple .cta-button   { background-color: #7546d1; }
+.theme-purple .audience-title { color: #7546d1; }
 
 /* Orange Theme */
-.theme-orange .audience-box { border-color: #F39C12; }
-.theme-orange .cta-button   { background-color: #F39C12; }
-.theme-orange .audience-title { color: #F39C12; }
+.theme-orange .audience-box { border-color: #f77911; }
+.theme-orange .cta-button   { background-color: #f77911; }
+.theme-orange .audience-title { color: #f77911; }
 
 /* 6AM Purple Theme */
-.theme-6am-purple .audience-box { border-color: #6F4EF6; }
-.theme-6am-purple .cta-button   { background-color: #6F4EF6; }
-.theme-6am-purple .audience-title { color: #6F4EF6; }
+.theme-6am-purple .audience-box { border-color: #3b3470; }
+.theme-6am-purple .cta-button   { background-color: #3b3470; }
+.theme-6am-purple .audience-title { color: #3b3470; }
