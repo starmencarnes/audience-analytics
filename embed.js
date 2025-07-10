@@ -43,8 +43,8 @@
     const openRate = get(dataHeaders, dataRow, 'Open Rate');
     const impressions = get(dataHeaders, dataRow, 'Avg NL Impressions');
     const social = get(dataHeaders, dataRow, 'Social Followers');
-    const ig = get(dataHeaders, dataRow, 'Instagram Following');
-    const fb = get(dataHeaders, dataRow, 'Facebook Following');
+    const ig = get(dataHeaders, dataRow, 'IG Followers');
+    const fb = get(dataHeaders, dataRow, 'FB Followers');
 
     const totalAudience = (
       parseInt(subs.replace(/,/g, '')) + parseInt(social.replace(/,/g, ''))
