@@ -85,4 +85,15 @@
 
     container.appendChild(card);
   });
+
+  window.requestAnimationFrame(() => {
+  const anchor = window.location.hash?.substring(1);
+  if (anchor) {
+    const target = document.getElementById(anchor);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+});
+  
 })();
