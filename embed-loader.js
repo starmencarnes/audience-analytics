@@ -1,35 +1,35 @@
 (function () {
-  const host = document.querySelector('.sixam-embed');
+  // Select all embed containers
+  const hosts = document.querySelectorAll('.sixam-embed');
 
-  if (!host) return;
+  hosts.forEach(host => {
+    const shadow = host.attachShadow({ mode: 'open' });
 
-  // Create shadow root
-  const shadow = host.attachShadow({ mode: 'open' });
+    // Inject styles
+    const styleLink = document.createElement('link');
+    styleLink.rel = 'stylesheet';
+    styleLink.href = 'https://starmencarnes.github.io/audience-analytics/style.css';
+    shadow.appendChild(styleLink);
 
-  // Add CSS
-  const styleLink = document.createElement('link');
-  styleLink.rel = 'stylesheet';
-  styleLink.href = 'https://starmencarnes.github.io/audience-analytics/style.css';
-  shadow.appendChild(styleLink);
+    const fontLink = document.createElement('link');
+    fontLink.rel = 'stylesheet';
+    fontLink.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap';
+    shadow.appendChild(fontLink);
 
-  // Add font
-  const fontLink = document.createElement('link');
-  fontLink.rel = 'stylesheet';
-  fontLink.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap';
-  shadow.appendChild(fontLink);
+    // Inner container to target per card
+    const container = document.createElement('div');
+    container.className = 'sixam-embed';
+    container.dataset.market = host.dataset.market;
+    shadow.appendChild(container);
 
-  // Create target container
-  const container = document.createElement('div');
-  container.className = 'sixam-embed';
-  container.dataset.market = host.dataset.market; // Carry over the market value
-  shadow.appendChild(container);
+    // Track all targets
+    window.__sixamEmbedTargets = window.__sixamEmbedTargets || [];
+    window.__sixamEmbedTargets.push(container);
+  });
 
-  // Make this container available to embed.js
-  window.__sixamEmbedTarget = container;
-
-  // Load JS
+  // Load the main embed script once
   const script = document.createElement('script');
   script.src = 'https://starmencarnes.github.io/audience-analytics/embed.js';
   script.defer = true;
-  shadow.appendChild(script);
+  document.head.appendChild(script);
 })();
