@@ -1,20 +1,16 @@
 (async function () {
-  
   console.log("📦 embed.js is running...");
 
   const markets = document.querySelectorAll('.sixam-embed');
-
   console.log("Attempting to load meta.csv and data.csv...");
 
-  // Load both CSVs
   const [metaText, dataText] = await Promise.all([
-  fetch('https://starmencarnes.github.io/audience-analytics/meta.csv').then(r => r.text()),
-  fetch('https://starmencarnes.github.io/audience-analytics/data.csv').then(r => r.text())
+    fetch('https://starmencarnes.github.io/audience-analytics/meta.csv').then(r => r.text()),
+    fetch('https://starmencarnes.github.io/audience-analytics/data.csv').then(r => r.text())
   ]);
 
   console.log("Loaded meta.csv:", metaText.slice(0, 100));
   console.log("Loaded data.csv:", dataText.slice(0, 100));
-
 
   const parseCSV = text =>
     text.split('\n').map(r => r.split(',')).filter(r => r.length > 1);
@@ -22,7 +18,6 @@
   const [metaHeaders, ...metaRows] = parseCSV(metaText);
   const [dataHeaders, ...dataRows] = parseCSV(dataText);
 
-  // Create a lookup map of metadata
   const metaMap = Object.fromEntries(
     metaRows.map(row => {
       const entry = {};
@@ -31,15 +26,16 @@
     })
   );
 
-  // Loop through each embed div
   markets.forEach(container => {
     const mkt = container.dataset.market;
     const dataRow = dataRows.find(r => r[0].trim() === mkt);
     const meta = metaMap[mkt];
+
     console.log("👉 Rendering for market:", mkt);
-
-
-    if (!dataRow || !meta) return;
+    if (!dataRow || !meta) {
+      console.warn(`⚠️ Missing data for market: ${mkt}`);
+      return;
+    }
 
     const get = (headers, row, label) =>
       row[headers.indexOf(label)]?.trim() || '';
