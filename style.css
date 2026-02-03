@@ -1,5 +1,6 @@
 /* Reset and container */
-.sixam-embed {
+.sixam-embed,
+.fiveam-embed {
   all: revert;
   font-family: 'Poppins', sans-serif;
   display: block;
@@ -14,26 +15,29 @@
 }
 
 
-.sixam-embed * {
+.sixam-embed *,
+.fiveam-embed * {
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
 /* Card Container */
-.sixam-embed .analytics-sixam-card {
+.sixam-embed .analytics-sixam-card,
+.fiveam-embed .analytics-sixam-card {
   max-width: 500px;
   margin: 2rem auto;
   text-align: center;
   padding: 1.5rem;
   border-radius: 16px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
   border: 1px solid #eee;
   background-color: #fff;
   font-size: 16px;
 }
 
 /* Logo */
-.sixam-embed img.analyticslogo {
+.sixam-embed img.analyticslogo,
+.fiveam-embed img.analyticslogo {
   width: 80px;
   height: 80px;
   object-fit: contain;
@@ -42,27 +46,32 @@
 }
 
 /* Headings & Text */
-.sixam-embed .analytics-city-name {
+.sixam-embed .analytics-city-name,
+.fiveam-embed .analytics-city-name {
   font-size: 20px;
   color: #232323;
   margin-bottom: 0.3rem;
   font-weight: 700;
 }
 
-.sixam-embed p {
-  font-size: 1rem;         /* or 16px */
+.sixam-embed p,
+.fiveam-embed p {
+  font-size: 1rem;
+  /* or 16px */
   margin: 0 0 1rem 0;
   line-height: 1.5;
 }
 
-.sixam-embed .analytics-launch-date {
+.sixam-embed .analytics-launch-date,
+.fiveam-embed .analytics-launch-date {
   font-size: 16px;
   color: #232323;
   margin-bottom: 1rem;
 }
 
 /* CTA Button */
-.sixam-embed a.analytics-cta-button {
+.sixam-embed a.analytics-cta-button,
+.fiveam-embed a.analytics-cta-button {
   display: inline-block;
   background-color: #333;
   color: white;
@@ -74,12 +83,14 @@
   transition: background-color 0.2s ease;
 }
 
-.sixam-embed a.analytics-cta-button:hover {
+.sixam-embed a.analytics-cta-button:hover,
+.fiveam-embed a.analytics-cta-button:hover {
   opacity: 0.9;
 }
 
 /* Audience Box */
-.sixam-embed .audience-box {
+.sixam-embed .audience-box,
+.fiveam-embed .audience-box {
   border: 2px solid #ccc;
   border-radius: 12px;
   padding: 1rem;
@@ -88,7 +99,8 @@
 }
 
 /* Title */
-.sixam-embed .audience-title {
+.sixam-embed .audience-title,
+.fiveam-embed .audience-title {
   font-size: 20px;
   font-weight: 700;
   text-align: center;
@@ -98,34 +110,39 @@
 }
 
 /* Columns */
-.sixam-embed .audience-columns {
+.sixam-embed .audience-columns,
+.fiveam-embed .audience-columns {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 48px;
 }
 
-.sixam-embed .audience-section {
-  flex: 1 1 180px; 
+.sixam-embed .audience-section,
+.fiveam-embed .audience-section {
+  flex: 1 1 180px;
   min-width: 150px;
   max-width: 220px;
   text-align: left;
   word-wrap: break-word;
 }
 
-.sixam-embed .audience-section h4 {
+.sixam-embed .audience-section h4,
+.fiveam-embed .audience-section h4 {
   font-size: 18px;
   margin-bottom: 0.5rem;
   color: #232323;
 }
 
-.sixam-embed .analytics-label {
+.sixam-embed .analytics-label,
+.fiveam-embed .analytics-label {
   font-size: 16px;
   font-weight: 500;
   color: #333;
 }
 
-.sixam-embed .analytics-value {
+.sixam-embed .analytics-value,
+.fiveam-embed .analytics-value {
   font-size: 16px;
   font-weight: 600;
   display: block;
@@ -137,29 +154,95 @@
    Color Themes (by class)
    ======================== */
 
-.sixam-embed .theme-green .audience-box { border-color: #52bc26; }
-.sixam-embed .theme-green .analytics-cta-button { background-color: #52bc26; }
-.sixam-embed .theme-green .audience-title { color: #52bc26; }
+.sixam-embed .theme-green .audience-box,
+.fiveam-embed .theme-green .audience-box {
+  border-color: #52bc26;
+}
 
-.sixam-embed .theme-blue .audience-box { border-color: #2f95d3; }
-.sixam-embed .theme-blue .analytics-cta-button { background-color: #2f95d3; }
-.sixam-embed .theme-blue .audience-title { color: #2f95d3; }
+.sixam-embed .theme-green .analytics-cta-button,
+.fiveam-embed .theme-green .analytics-cta-button {
+  background-color: #52bc26;
+}
 
-.sixam-embed .theme-red .audience-box { border-color: #f44747; }
-.sixam-embed .theme-red .analytics-cta-button { background-color: #f44747; }
-.sixam-embed .theme-red .audience-title { color: #f44747; }
+.sixam-embed .theme-green .audience-title,
+.fiveam-embed .theme-green .audience-title {
+  color: #52bc26;
+}
 
-.sixam-embed .theme-purple .audience-box { border-color: #7546d1; }
-.sixam-embed .theme-purple .analytics-cta-button { background-color: #7546d1; }
-.sixam-embed .theme-purple .audience-title { color: #7546d1; }
+.sixam-embed .theme-blue .audience-box,
+.fiveam-embed .theme-blue .audience-box {
+  border-color: #2f95d3;
+}
 
-.sixam-embed .theme-orange .audience-box { border-color: #f77911; }
-.sixam-embed .theme-orange .analytics-cta-button { background-color: #f77911; }
-.sixam-embed .theme-orange .audience-title { color: #f77911; }
+.sixam-embed .theme-blue .analytics-cta-button,
+.fiveam-embed .theme-blue .analytics-cta-button {
+  background-color: #2f95d3;
+}
 
-.sixam-embed .theme-6am-purple .audience-box { border-color: #3b3470; }
-.sixam-embed .theme-6am-purple .analytics-cta-button { background-color: #3b3470; }
-.sixam-embed .theme-6am-purple .audience-title { color: #3b3470; }
+.sixam-embed .theme-blue .audience-title,
+.fiveam-embed .theme-blue .audience-title {
+  color: #2f95d3;
+}
+
+.sixam-embed .theme-red .audience-box,
+.fiveam-embed .theme-red .audience-box {
+  border-color: #f44747;
+}
+
+.sixam-embed .theme-red .analytics-cta-button,
+.fiveam-embed .theme-red .analytics-cta-button {
+  background-color: #f44747;
+}
+
+.sixam-embed .theme-red .audience-title,
+.fiveam-embed .theme-red .audience-title {
+  color: #f44747;
+}
+
+.sixam-embed .theme-purple .audience-box,
+.fiveam-embed .theme-purple .audience-box {
+  border-color: #7546d1;
+}
+
+.sixam-embed .theme-purple .analytics-cta-button,
+.fiveam-embed .theme-purple .analytics-cta-button {
+  background-color: #7546d1;
+}
+
+.sixam-embed .theme-purple .audience-title,
+.fiveam-embed .theme-purple .audience-title {
+  color: #7546d1;
+}
+
+.sixam-embed .theme-orange .audience-box,
+.fiveam-embed .theme-orange .audience-box {
+  border-color: #f77911;
+}
+
+.sixam-embed .theme-orange .analytics-cta-button,
+.fiveam-embed .theme-orange .analytics-cta-button {
+  background-color: #f77911;
+}
+
+.sixam-embed .theme-orange .audience-title,
+.fiveam-embed .theme-orange .audience-title {
+  color: #f77911;
+}
+
+.sixam-embed .theme-6am-purple .audience-box,
+.fiveam-embed .theme-6am-purple .audience-box {
+  border-color: #3b3470;
+}
+
+.sixam-embed .theme-6am-purple .analytics-cta-button,
+.fiveam-embed .theme-6am-purple .analytics-cta-button {
+  background-color: #3b3470;
+}
+
+.sixam-embed .theme-6am-purple .audience-title,
+.fiveam-embed .theme-6am-purple .audience-title {
+  color: #3b3470;
+}
 
 
 @media (max-width: 480px) {
@@ -167,7 +250,7 @@
   .audience-column {
     justify-content: left;
   }
-  
+
   .audience-section h4 {
     font-size: 1rem;
   }
@@ -184,4 +267,3 @@
     padding: 0.8rem;
   }
 }
-
