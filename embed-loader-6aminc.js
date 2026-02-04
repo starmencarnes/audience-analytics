@@ -35,12 +35,9 @@
 
   // Find the insertion point - look for the 6AM City header anchor
   const insertionPoint = document.getElementById('6am-city-newsletters');
+  const targetElement = insertionPoint ? insertionPoint.closest('.LogoListB') : null;
 
-  // Find the target element
-  const targetElement = insertionPoint ? (insertionPoint.closest('.LogoListB') || insertionPoint) : null;
-
-  // Keep track of where to insert the next element
-  let lastInserted = targetElement;
+  let lastInserted = null;
 
   // Only create containers for markets with 6am-purple brand color
   rows.forEach(row => {
@@ -51,11 +48,16 @@
     container.className = 'sixam-embed';
     container.dataset.market = market;
 
-    // Insert after the target element or the last inserted element
-    if (lastInserted && lastInserted !== document.body) {
+    if (!lastInserted && targetElement) {
+      // Insert first container before the LogoListB header
+      targetElement.insertAdjacentElement('beforebegin', container);
+      lastInserted = container;
+    } else if (lastInserted) {
+      // Insert subsequent containers after the previous one
       lastInserted.insertAdjacentElement('afterend', container);
-      lastInserted = container; // Update to insert next one after this
+      lastInserted = container;
     } else {
+      // Fallback if no target element
       document.body.appendChild(container);
     }
   });

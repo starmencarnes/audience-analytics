@@ -33,15 +33,10 @@
       .map(entry => entry['Market'])
   );
 
-  // Find insertion point - look for the last .sixam-embed (from 6aminc loader) or the 6am header
-  let lastInserted = document.querySelector('.sixam-embed:last-of-type');
-
-  if (!lastInserted) {
-    // If no 6aminc embeds exist yet, position after the 6am-city-newsletters header
-    const insertionPoint = document.getElementById('6am-city-newsletters');
-    const targetElement = insertionPoint ? (insertionPoint.closest('.LogoListB') || insertionPoint) : null;
-    lastInserted = targetElement;
-  }
+  // Find insertion point - position after the 6am-city-newsletters header
+  const insertionPoint = document.getElementById('6am-city-newsletters');
+  const targetElement = insertionPoint ? insertionPoint.closest('.LogoListB') : null;
+  let lastInserted = targetElement;
 
   // Only create containers for markets that are NOT 6am-purple
   rows.forEach(row => {
@@ -52,10 +47,10 @@
     container.className = 'sixam-embed';
     container.dataset.market = market;
 
-    // Insert after the last inserted element
+    // Insert after the header or the last inserted element
     if (lastInserted && lastInserted !== document.body) {
       lastInserted.insertAdjacentElement('afterend', container);
-      lastInserted = container; // Update to insert next one after this
+      lastInserted = container;
     } else {
       document.body.appendChild(container);
     }
