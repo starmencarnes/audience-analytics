@@ -25,7 +25,7 @@
 
   // Find the insertion point - look for the 5AM City header anchor or LogoListB div
   const insertionPoint = document.getElementById('5am-city-newsletters') ||
-                         document.querySelector('.LogoListB');
+    document.querySelector('.LogoListB');
 
   // Find the target element (the LogoListB div)
   const targetElement = insertionPoint ? (insertionPoint.closest('.LogoListB') || insertionPoint) : null;
