@@ -23,6 +23,16 @@
   const text = await response.text();
   const rows = text.trim().split('\n').slice(1); // Skip header
 
+  // Find the insertion point - look for the 5AM City header anchor or LogoListB div
+  const insertionPoint = document.getElementById('5am-city-newsletters') ||
+                         document.querySelector('.LogoListB');
+
+  // Find the target element (the LogoListB div)
+  const targetElement = insertionPoint ? (insertionPoint.closest('.LogoListB') || insertionPoint) : null;
+
+  // Keep track of where to insert the next element
+  let lastInserted = targetElement;
+
   rows.forEach(row => {
     const market = row.split(',')[0]?.trim();
     if (!market) return;
@@ -30,7 +40,14 @@
     const container = document.createElement('div');
     container.className = 'fiveam-embed';
     container.dataset.market = market;
-    document.body.appendChild(container);
+
+    // Insert after the target element or the last inserted element
+    if (lastInserted && lastInserted !== document.body) {
+      lastInserted.insertAdjacentElement('afterend', container);
+      lastInserted = container; // Update to insert next one after this
+    } else {
+      document.body.appendChild(container);
+    }
   });
 
   // Load embed-5am.js last

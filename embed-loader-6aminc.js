@@ -18,7 +18,7 @@
     await new Promise(resolve => document.addEventListener('DOMContentLoaded', resolve));
   }
 
-  // Fetch both data.csv and meta.json to filter out 6am-purple markets
+  // Fetch both data.csv and meta.json to filter by brand color
   const [dataText, metaJson] = await Promise.all([
     fetch('https://starmencarnes.github.io/audience-analytics/data.csv').then(r => r.text()),
     fetch('https://starmencarnes.github.io/audience-analytics/meta.json').then(r => r.json())
@@ -26,22 +26,38 @@
 
   const rows = dataText.trim().split('\n').slice(1); // Skip header
 
-  // Create a set of markets with 6am-purple brand color to exclude
+  // Create a map of markets with 6am-purple brand color
   const purpleMarkets = new Set(
     metaJson
       .filter(entry => entry['Brand Color'] === '6am-purple')
       .map(entry => entry['Market'])
   );
 
-  // Only create containers for markets that are NOT 6am-purple
+  // Find the insertion point - look for the 6AM City header anchor
+  const insertionPoint = document.getElementById('6am-city-newsletters');
+
+  // Find the target element
+  const targetElement = insertionPoint ? (insertionPoint.closest('.LogoListB') || insertionPoint) : null;
+
+  // Keep track of where to insert the next element
+  let lastInserted = targetElement;
+
+  // Only create containers for markets with 6am-purple brand color
   rows.forEach(row => {
     const market = row.split(',')[0]?.trim();
-    if (!market || purpleMarkets.has(market)) return;
+    if (!market || !purpleMarkets.has(market)) return;
 
     const container = document.createElement('div');
     container.className = 'sixam-embed';
     container.dataset.market = market;
-    document.body.appendChild(container);
+
+    // Insert after the target element or the last inserted element
+    if (lastInserted && lastInserted !== document.body) {
+      lastInserted.insertAdjacentElement('afterend', container);
+      lastInserted = container; // Update to insert next one after this
+    } else {
+      document.body.appendChild(container);
+    }
   });
 
   // Load embed.js last
