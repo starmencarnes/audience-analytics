@@ -60,9 +60,5 @@
     }
   });
 
-  // Load embed.js last
-  const script = document.createElement('script');
-  script.src = 'https://starmencarnes.github.io/audience-analytics/embed.js';
-  script.defer = true;
-  head.appendChild(script);
+  // Note: embed.js will be loaded by embed-loader.js after all 6AM containers are created
 })();
